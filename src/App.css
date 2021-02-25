@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+}
+
+.app_container {
+  width: 100%;
+  height: calc(100vh - 56px);
+  overflow: auto;
+  background: #EEEEEE;
+}
+
+.line-chart {
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .25rem;
+  background: white;
+}
+
+.line-chart .chart-header {
+  padding: 20px 15px;
+  width: 100%;
+}
+
+.line-chart .chart-header .duration-dropdown {
+  float: right;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  font-size: 14px;
+  padding: 5px;
+  color: black;
+}
+
+.line-chart .chart-header .title {
+  display: inline-block;
+}
+
+.case-wrapper {
+  text-align: center;
+}
+
+.case-wrapper .card-subtitle {
+  font-size: 14px;
+  color: #333333;
+  font-weight: 400;
+}
+
+.case-wrapper .card-title {
+  font-weight: bold;
+}
+
+.case-wrapper.total-cases .card-title {
+  color: #DE3700;
+}
+
+.case-wrapper.total-cases .badge {
+  background: rgba(222, 55, 0, 0.2);
+  font-weight: 500;
+  color: black;
+  padding: 7px 10px;
+}
+
+.case-wrapper.active-cases .card-title {
+  color: #F4C363;
+}
+
+.case-wrapper.active-cases .badge {
+  background: rgba(244, 195, 99, 0.2);
+  font-weight: 500;
+  color: black;
+  padding: 7px 10px;
+}
+
+.case-wrapper.recovered-cases .card-title {
+  color: #00AA00;
+}
+
+.case-wrapper.recovered-cases .badge {
+  background: rgba(0, 170, 0, 0.2);
+  font-weight: 500;
+  color: black;
+  padding: 7px 10px;
+}
+
+.case-wrapper.fatal-cases .card-title {
+  color: #767676;
+}
+
+.case-wrapper.fatal-cases .badge {
+  background: rgba(118, 118, 118, 0.2);
+  font-weight: 500;
+  color: black;
+  padding: 7px 10px;
+}
+
+.vaccine-table {
+  border: none;
+  font-size: 14px;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .25rem;
+}
+
+.vaccine-table tr {
+  height: 30px;
+  background: white;
+}
+
+.vaccine-table tbody tr {
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.vaccine-table td {
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.vaccine-table tr td, th:first-of-type {
+  padding-left: 10px;
+}
+
+.vaccine-table th {
+  font-size: 16px;
+  text-align: center;
+}
+
+.vaccine-table tr td, th:last-of-type {
+  padding-right: 10px;
+}
+
+.covid-map {
+  height: calc(100vh - 56px);
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .25rem;
+}
+
+.covid-map .leaflet-container {
+  height: 100%;
+}
+
+.navigation-link {
+  margin-right: 30px;
+  color: #333333;
+  transition: 0.1s all;
+}
+
+.navigation-link.selected {
+  font-weight: bold;
+}
+
+.navigation-link:hover {
+  font-weight: bold;
+  color: #333;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Overriding Bootstrap */
+
+.form-inline .dropdown-menu {
+  height: calc(100vh - 56px);
+  overflow: auto;
+}
