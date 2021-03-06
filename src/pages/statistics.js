@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import Loading from '../components/loading'
-import LineChart from '../components/linechart';
+import Loading from '../components/Loading'
+import LineChart from '../components/LineChart';
 import CaseData from '../components/CaseData'
 import { SelectedCountryContext } from '../store/SelectedCountryContext';
 
@@ -11,6 +11,7 @@ const Statistics = () => {
     const [caseData, setCaseData] = useState();
     const [duration, setDuration] = useState(90);
     const [selectedCountry, setSelectedCountry] = useContext(SelectedCountryContext);
+    const [provinceData, setProvinceData] = useState();
 
     const FetchAllCasesData = () => {
         const region = selectedCountry === "Worldwide" ? "all" : "countries/" + selectedCountry;
@@ -52,27 +53,23 @@ const Statistics = () => {
         });
     }
 
+    useEffect(() => {
+
+    })
     return (
         <>
             {
                 lineChartData && caseData
                     ?
-                    <div className="app_dashboard">
-                        <Container fluid className="mb-5">
-                            <Row className="my-3">
-                                <CaseData caseData={caseData} />
-                            </Row>
+                        <Container fluid>
                             <Row>
+                                <CaseData caseData={caseData} />
                                 <LineChart
                                     duration={duration}
                                     setDuration={setDuration}
                                     lineChartData={lineChartData} />
-                                <Col>
-
-                                </Col>
                             </Row>
                         </Container>
-                    </div>
                     :
                     <Loading />
             }

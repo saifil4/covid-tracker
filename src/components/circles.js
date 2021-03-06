@@ -1,34 +1,61 @@
 import React, { useEffect, useContext } from 'react';
-import Numeral from 'numeral';
-import { Circle, Tooltip, useMap } from 'react-leaflet';
+import { Circle, Tooltip, useMap, useMapEvent } from 'react-leaflet';
 
 import { SelectedCountryContext } from '../store/SelectedCountryContext';
-const Circles = ({ mapData }) => {
+const Circles = ({ zoomLevel, setZoomLevel, mapData }) => {
     const map = useMap();
-    const zoom = map.getZoom();
-
     const [selectedCountry, setSelectedCountry] = useContext(SelectedCountryContext);
+
+    useMapEvent(('zoom'), () => {
+        console.log(map.getZoom());
+        setZoomLevel(map.getZoom())
+    })
+
     useEffect(() => {
         if (selectedCountry !== "Worldwide") {
             console.log(selectedCountry);
             const regiondata = mapData.find(md => md.country === selectedCountry);
-            const latlong = [regiondata.countryInfo.lat, regiondata.countryInfo.long];
+            const latlong = [regiondata.lat, regiondata.long];
             map.panTo(latlong);
-            // map.getBoundsZoom(la)
         }
     }, [selectedCountry])
+
+    const Multiplier = () => {
+        return parseInt(600 / zoomLevel);
+    }
 
     return (
         <>
             {mapData.map(country => (
                 <Circle
-                    center={[country.countryInfo.lat, country.countryInfo.long]}
+                    center={[country.lat, country.long]}
                     fillOpacity={0.4}
                     color="#cc1034"
                     fillColor="#cc1034"
-                    radius={Math.sqrt(country.cases) * 300}>
-                    <Tooltip>
-                        <h3>Popup is up</h3>
+                    radius={Math.sqrt(country.confirmed) * Multiplier()}>
+                    <Tooltip className="case-tooltip">
+                        {
+                            country.province === null
+                                ?
+                                <h5>{country.country}</h5>
+                                :
+                                <h5>{country.province}</h5>
+                        }
+                        <div className="case-item">
+                            <div className="legend amber"></div>
+                            <label>Confirmed</label>
+                            <p>{country.confirmed}</p>
+                        </div>
+                        <div className="case-item">
+                        <div className="legend green"></div>
+                            <label>Recovered</label><p>{country.recovered}</p>
+                        </div>
+                        <div className="case-item">
+                        <div className="legend red"></div>
+                            <label>Deaths</label><p>{country.deaths}</p>
+                        </div>
+
+
                     </Tooltip>
                 </Circle>
             ))}

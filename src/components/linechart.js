@@ -57,13 +57,12 @@ const LineChart = ({ lineChartData, duration, setDuration }) => {
 
     return (
         <>
-            <Col>
+            <Col md={9}>
                 {lineChartData?.length > 0 && (
                     <div className="line-chart">
                         <div className="chart-header">
                             <h5 className="title">Daily new cases</h5>
                             <select className="duration-dropdown" value={duration} onChange={(e) => setDuration(e.target.value)}>
-                                <option value={7}>Last 1 Week</option>
                                 <option value={30}>Last 30 Days</option>
                                 <option value={90}>Last 3 Months</option>
                                 <option value={180}>Last 6 Months</option>

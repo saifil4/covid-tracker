@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-
+import VaccineCoverage from '../components/VaccineCoverage';
 const Vaccine = () => {
     const [vaccineData, setVaccineData] = useState();
 
@@ -19,7 +19,7 @@ const Vaccine = () => {
                     ?
                     <Container fluid>
                         <Row>
-                            <Col>
+                            <Col md={6}>
                                 <div className="vaccine-table">
                                     <table>
                                         <thead>
@@ -47,7 +47,8 @@ const Vaccine = () => {
                                 </div>
 
                             </Col>
-                            <Col>
+                            <Col md={6}>
+                                <VaccineCoverage />
                             </Col>
                         </Row>
                     </Container>

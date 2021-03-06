@@ -158,6 +158,51 @@
   width: 100vw;
 }
 
+.case-tooltip {
+  background: white;
+}
+
+.case-tooltip .case-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.case-tooltip .case-item label {
+  font-size: 14px;
+  font-weight: bold;
+  padding-right: 10px;
+  margin: 0;
+}
+
+.case-tooltip .case-item .legend {
+  width: 15px;
+  height: 15px;
+  border-width: 2px;
+  border-style: solid;
+  margin-right: 5px;
+}
+
+.legend.red {
+  background: rgba(224, 56, 0, 0.4);
+  border-color: #DE3700;
+}
+
+.legend.amber {
+  background: rgba(244, 195, 99, 0.4);
+  border-color: #f4c363;
+}
+
+.legend.green {
+  background: rgba(0, 170, 0, 0.4);
+  border-color: #00AA00;
+}
+
+.case-tooltip .case-item p {
+  margin: 0;
+  font-size: 14px;
+}
+
 /* Overriding Bootstrap */
 
 .form-inline .dropdown-menu {
