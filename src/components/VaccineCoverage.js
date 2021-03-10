@@ -33,7 +33,8 @@ const VaccineCoverage = () => {
             <LineChart
                 duration={duration}
                 setDuration={setDuration}
-                lineChartData={vaccineData} />
+                lineChartData={vaccineData}
+                title="Vaccination Rate" />
         </>
     )
 }

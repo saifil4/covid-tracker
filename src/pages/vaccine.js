@@ -19,15 +19,15 @@ const Vaccine = () => {
                     ?
                     <Container fluid>
                         <Row>
-                            <Col md={6}>
-                                <div className="vaccine-table">
+                            <Col md={4}>
+                                <div style={{ height: "calc(100vh - 80px)", overflow: "auto" }} className="vaccine-table">
                                     <table>
                                         <thead>
                                             <tr>
                                                 <th>Vaccine</th>
                                                 <th>Mechanism</th>
                                                 {/* <th>Sponsors</th> */}
-                                                <th>Phase</th>
+                                                <th style={{ width: "25%" }}>Phase</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -47,7 +47,7 @@ const Vaccine = () => {
                                 </div>
 
                             </Col>
-                            <Col md={6}>
+                            <Col md={8}>
                                 <VaccineCoverage />
                             </Col>
                         </Row>

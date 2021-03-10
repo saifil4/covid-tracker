@@ -11,7 +11,6 @@ const Statistics = () => {
     const [caseData, setCaseData] = useState();
     const [duration, setDuration] = useState(90);
     const [selectedCountry, setSelectedCountry] = useContext(SelectedCountryContext);
-    const [provinceData, setProvinceData] = useState();
 
     const FetchAllCasesData = () => {
         const region = selectedCountry === "Worldwide" ? "all" : "countries/" + selectedCountry;
@@ -61,15 +60,18 @@ const Statistics = () => {
             {
                 lineChartData && caseData
                     ?
-                        <Container fluid>
-                            <Row>
-                                <CaseData caseData={caseData} />
+                    <Container fluid>
+                        <Row>
+                            <CaseData caseData={caseData} />
+                            <Col md={9}>
                                 <LineChart
                                     duration={duration}
                                     setDuration={setDuration}
-                                    lineChartData={lineChartData} />
-                            </Row>
-                        </Container>
+                                    lineChartData={lineChartData}
+                                    title="Daily new cases" />
+                            </Col>
+                        </Row>
+                    </Container>
                     :
                     <Loading />
             }
