@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import Loading from '../components/Loading' 
+import Loading from '../components/Loading';
 import LineChart from '../components/LineChart';
-import CaseData from '../components/CaseData'
+import CaseData from '../components/CaseData';
 import { SelectedCountryContext } from '../store/SelectedCountryContext';
 
 const Statistics = () => {
