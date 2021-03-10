@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import Circle from '../components/circles';
-import Loading from '../components/Loading';
 
 const CovidMap = () => {
     const [data, setData] = useState();
