@@ -73,7 +73,9 @@ const Statistics = () => {
                         </Row>
                     </Container>
                     :
-                    <Loading />
+                    <div className="loading-container">
+                        <i style={{ fontSize: "30px" }} class="fas fa-circle-notch"></i>
+                    </div>
             }
 
         </>
