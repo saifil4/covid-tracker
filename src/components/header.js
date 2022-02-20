@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Navbar, Nav, Form, Dropdown } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import { SelectedCountryContext } from '../store/SelectedCountryContext';
+import styled from 'styled-components';
 
 const Header = () => {
     const [countries, setCountries] = useState([]);
@@ -32,7 +33,7 @@ const Header = () => {
 
     return (
         <>
-            <Navbar bg="light" expand="lg">
+            <Navigation bg="light" expand="lg">
                 <Navbar.Brand className="mr-5"><i class="fas fa-virus mr-2"></i><b>Covid Tracker</b></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -61,10 +62,17 @@ const Header = () => {
                         </Dropdown>
                     </Form>
                 </Navbar.Collapse>
-            </Navbar>
+            </Navigation>
         </>
 
     )
 }
 
 export default Header;
+
+const Navigation = styled(Navbar)`
+display:none;
+@media (max-width: 576px) {
+    display:flex;
+  }  
+`

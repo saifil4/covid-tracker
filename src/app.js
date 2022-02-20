@@ -1,30 +1,43 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
-import Statistics from './pages/statistics';
-import CovidMap from './pages/covidmap';
-import Vaccine from './pages/vaccine';
-import Header from './components/header';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { SelectedCountryProvider } from "./store/SelectedCountryContext";
-import TestLine from './components/testLine';
+import React from 'react';
+import AppRoutes from './appRoutes';
+import LeftNavigation from './components/LeftNavigation';
+import styled from 'styled-components';
 
 function App() {
 
   return (
     <>
-
-      <Router>
-        <SelectedCountryProvider>
-          <Header />
-          <div className="app_container">
-            <Route path='/' exact component={Statistics} />
-            <Route path='/covidmap' component={CovidMap} />
-            {/* <Route path='/vaccine' component={Vaccine} /> */}
-          </div>
-        </SelectedCountryProvider>
-      </Router>
+      <AppContainer>
+        <LeftNav>
+          <LeftNavigation />
+        </LeftNav>
+        <Main>
+          <AppRoutes />
+        </Main>
+      </AppContainer>
     </>
   );
 }
 
 export default App;
+
+
+const AppContainer = styled.div`
+  width: 100%;
+  display: flex;
+`
+
+const LeftNav = styled.div`
+  width: 275px;
+  @media (max-width: 576px) {
+    display:none;
+  }  
+`
+
+const Main = styled.div`
+  width: calc(100% - 275px);
+  @media (max-width: 576px) {
+    width:100%;
+  }  
+`
