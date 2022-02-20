@@ -1,55 +1,88 @@
 import React from 'react';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler
+} from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import numeral from "numeral";
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler
+);
 
 const LineChart = ({ lineChartData, duration, setDuration, title, bgColor, borderColor }) => {
 
 
+    // const options = {
+    //     legend: {
+    //         display: false,
+    //     },
+    //     elements: {
+    //         point: {
+    //             radius: 0,
+    //         },
+    //     },
+    //     maintainAspectRatio: true,
+    //     tooltips: {
+    //         mode: "index",
+    //         intersect: false,
+    //         callbacks: {
+    //             label: function (tooltipItem, data) {
+    //                 return numeral(tooltipItem.value).format("+0,0");
+    //             },
+    //         },
+    //     },
+    //     scales: {
+    //         xAxes: [
+    //             {
+    //                 type: "time",
+    //                 time: {
+    //                     format: "MM/DD/YY",
+    //                     tooltipFormat: "ll",
+    //                 },
+    //             },
+    //         ],
+    //         yAxes: [
+    //             {
+    //                 gridLines: {
+    //                     display: false,
+    //                 },
+    //                 ticks: {
+    //                     // Include a dollar sign in the ticks
+    //                     callback: function (value, index, values) {
+    //                         return numeral(value).format("0a");
+    //                     },
+    //                 },
+    //             },
+    //         ],
+    //     },
+    // };
+
     const options = {
-        legend: {
-            display: false,
-        },
-        elements: {
-            point: {
-                radius: 0,
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false
             },
-        },
-        maintainAspectRatio: true,
-        tooltips: {
-            mode: "index",
-            intersect: false,
-            callbacks: {
-                label: function (tooltipItem, data) {
-                    return numeral(tooltipItem.value).format("+0,0");
-                },
-            },
-        },
-        scales: {
-            xAxes: [
-                {
-                    type: "time",
-                    time: {
-                        format: "MM/DD/YY",
-                        tooltipFormat: "ll",
-                    },
-                },
-            ],
-            yAxes: [
-                {
-                    gridLines: {
-                        display: false,
-                    },
-                    ticks: {
-                        // Include a dollar sign in the ticks
-                        callback: function (value, index, values) {
-                            return numeral(value).format("0a");
-                        },
-                    },
-                },
-            ],
+            filler: {
+                propagate: true
+            }
         },
     };
-
 
 
 
@@ -69,16 +102,17 @@ const LineChart = ({ lineChartData, duration, setDuration, title, bgColor, borde
                     </div>
                     <Line
                         data={{
+                            labels: lineChartData.map(chart => chart.x),
                             datasets: [
                                 {
+                                    id: 1,
+                                    label: '',
+                                    fill: 'origin',
                                     backgroundColor: bgColor,
                                     borderColor: borderColor,
-                                    borderWidth: '1.5',
-                                    borderJoinStyle: 'miter',
-                                    borderCapStyle: 'round',
-                                    data: lineChartData,
+                                    data: lineChartData.map(chart => chart.y)
                                 },
-                            ],
+                            ]
                         }}
                         options={options}
                     />

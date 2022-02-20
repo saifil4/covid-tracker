@@ -6,6 +6,7 @@ import Vaccine from './pages/vaccine';
 import Header from './components/header';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { SelectedCountryProvider } from "./store/SelectedCountryContext";
+import TestLine from './components/testLine';
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
           <div className="app_container">
             <Route path='/' exact component={Statistics} />
             <Route path='/covidmap' component={CovidMap} />
-            <Route path='/vaccine' component={Vaccine} />
+            {/* <Route path='/vaccine' component={Vaccine} /> */}
           </div>
         </SelectedCountryProvider>
       </Router>
