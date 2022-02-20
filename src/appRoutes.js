@@ -6,6 +6,7 @@ import Vaccine from './pages/vaccine';
 import Header from './components/header';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { SelectedCountryProvider } from "./store/SelectedCountryContext";
+import styled from 'styled-components';
 
 function AppRoutes() {
 
@@ -14,11 +15,11 @@ function AppRoutes() {
       <Router>
         <SelectedCountryProvider>
           <Header />
-          <div className="app_container">
+          <AppContainer>
             <Route path='/' exact component={Statistics} />
             <Route path='/covidmap' component={CovidMap} />
             {/* <Route path='/vaccine' component={Vaccine} /> */}
-          </div>
+          </AppContainer>
         </SelectedCountryProvider>
       </Router>
     </>
@@ -26,3 +27,15 @@ function AppRoutes() {
 }
 
 export default AppRoutes;
+
+const AppContainer = styled.div`
+    width: 100%;
+    height:100vh;
+    overflow: auto;
+    background: #f9f9f9;
+    padding-top: 10px;
+    @media(max-width: 575px){
+        height: calc(100vh - 56px);
+    }
+
+`

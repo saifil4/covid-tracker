@@ -2,38 +2,6 @@
   margin: 0;
 }
 
-.app_container {
-  width: 100%;
-  height: calc(100vh - 56px);
-  overflow: auto;
-  background: #EEEEEE;
-  padding-top: 10px;
-}
-
-.line-chart {
-  border: 1px solid rgba(0, 0, 0, .125);
-  border-radius: .25rem;
-  background: white;
-}
-
-.line-chart .chart-header {
-  padding: 20px 15px;
-  width: 100%;
-}
-
-.line-chart .chart-header .duration-dropdown {
-  float: right;
-  border-radius: 0.25rem;
-  border: 1px solid;
-  font-size: 14px;
-  padding: 5px;
-  color: black;
-}
-
-.line-chart .chart-header .title {
-  display: inline-block;
-}
-
 .case-wrapper {
   text-align: center;
 }

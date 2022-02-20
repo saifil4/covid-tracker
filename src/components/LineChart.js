@@ -11,6 +11,7 @@ import {
     Filler
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import styled from 'styled-components';
 
 ChartJS.register(
     CategoryScale,
@@ -89,16 +90,16 @@ const LineChart = ({ lineChartData, duration, setDuration, title, bgColor, borde
     return (
         <>
             {lineChartData?.length > 0 && (
-                <div className="line-chart">
-                    <div className="chart-header">
-                        <h5 className="title">{title}</h5>
-                        <select className="duration-dropdown" value={duration} onChange={(e) => setDuration(e.target.value)}>
+                <LineChartCard>
+                    <LineChartCardHeader>
+                        <LineChartCardTitle>{title}</LineChartCardTitle>
+                        <DurationDropDown value={duration} onChange={(e) => setDuration(e.target.value)}>
                             <option value={30}>Last 30 Days</option>
                             <option value={90}>Last 3 Months</option>
                             <option value={180}>Last 6 Months</option>
                             <option value={365}>Last 1 Year</option>
-                        </select>
-                    </div>
+                        </DurationDropDown>
+                    </LineChartCardHeader>
                     <Line
                         data={{
                             labels: lineChartData.map(chart => chart.x),
@@ -115,7 +116,7 @@ const LineChart = ({ lineChartData, duration, setDuration, title, bgColor, borde
                         }}
                         options={options}
                     />
-                </div>
+                </LineChartCard>
 
             )}
         </>
@@ -124,3 +125,28 @@ const LineChart = ({ lineChartData, duration, setDuration, title, bgColor, borde
 }
 
 export default LineChart;
+
+
+const LineChartCard = styled.div`
+  border-radius: .25rem;
+  background: white;
+  box-shadow: 0px 3px 5px rgb(0 0 0 / 5%);
+`;
+
+const LineChartCardHeader = styled.div`
+    padding: 20px 15px;
+    width: 100%;
+`;
+
+const LineChartCardTitle = styled.h5`
+    display: inline-block;
+`
+
+const DurationDropDown = styled.select`
+    float: right;
+    border-radius: 0.25rem;
+    border: 1px solid;
+    font-size: 14px;
+    padding: 5px;
+    color: black;
+`

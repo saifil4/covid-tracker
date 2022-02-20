@@ -9,10 +9,13 @@ function App() {
   return (
     <>
       <AppContainer>
-        <LeftNav>
+        <SidePanel>
           <LeftNavigation />
-        </LeftNav>
+        </SidePanel>
         <Main>
+          <Nav>
+            <a>Home</a>
+          </Nav>
           <AppRoutes />
         </Main>
       </AppContainer>
@@ -28,8 +31,16 @@ const AppContainer = styled.div`
   display: flex;
 `
 
-const LeftNav = styled.div`
+const SidePanel = styled.div`
   width: 275px;
+  @media (max-width: 576px) {
+    display:none;
+  }  
+`;
+
+const Nav = styled.div`
+  width: 100%;
+  height: 56px;
   @media (max-width: 576px) {
     display:none;
   }  
