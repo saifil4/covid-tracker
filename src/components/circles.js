@@ -29,9 +29,10 @@ const Circles = ({ zoomLevel, setZoomLevel, mapData }) => {
             {mapData.map(country => (
                 <Circle
                     center={[country.lat, country.long]}
-                    fillOpacity={0.4}
-                    color="#cc1034"
-                    fillColor="#cc1034"
+                    fillOpacity={0.6}
+                    color="#e74c3c"
+                    fillColor="#e74c3c"
+                    stroke="1px"
                     radius={Math.sqrt(country.confirmed) * Multiplier()}>
                     <Tooltip className="case-tooltip">
                         {

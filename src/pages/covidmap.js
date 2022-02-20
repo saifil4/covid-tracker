@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { MapContainer, TileLayer, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap, GeoJSON } from 'react-leaflet';
 import Circle from '../components/circles';
 
 const CovidMap = () => {
     const [data, setData] = useState();
-    const [zoomLevel, setZoomLevel] = useState(2);
+    const [zoomLevel, setZoomLevel] = useState(3);
 
     useEffect(() => {
         console.log(zoomLevel);
@@ -59,12 +59,15 @@ const CovidMap = () => {
                 {
                     data
                         ?
-                        <MapContainer center={[51.505, -0.09]} zoom={zoomLevel} >
+                        <MapContainer center={[51.505, -0.09]} zoom={zoomLevel} minZoom={3} >
                             <TileLayer
                                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
                             />
                             <Circle zoomLevel={zoomLevel} setZoomLevel={setZoomLevel} mapData={data} />
+                            <div className='info-panel'>
+
+                            </div>
                         </MapContainer>
                         :
                         <div className="loading-container">

@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import LineChart from '../components/LineChart';
 import CaseData from '../components/CaseData';
 import { SelectedCountryContext } from '../store/SelectedCountryContext';
+import VaccineCoverage from '../components/VaccineCoverage';
 
 const Statistics = () => {
     const [lineChartData, setLineChartData] = useState();
@@ -61,13 +62,22 @@ const Statistics = () => {
                     ?
                     <Container fluid>
                         <Row>
-                            <CaseData caseData={caseData} />
-                            <Col md={9}>
+                            <Col md={12}>
+                                <CaseData caseData={caseData} />
+                            </Col>
+                        </Row>
+                        <Row className="mt-3">
+                            <Col md={6}>
                                 <LineChart
                                     duration={duration}
                                     setDuration={setDuration}
                                     lineChartData={lineChartData}
+                                    bgColor = "rgba(231, 76, 60, 0.5)"
+                                    borderColor ="#CC1034"
                                     title="Daily new cases" />
+                            </Col>
+                            <Col md={6}>
+                                <VaccineCoverage />
                             </Col>
                         </Row>
                     </Container>

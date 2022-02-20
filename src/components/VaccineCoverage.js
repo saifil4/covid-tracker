@@ -14,11 +14,11 @@ const VaccineCoverage = () => {
             .then(res => res.json())
             .then(result => {
                 var data = selectedCountry === 'Worldwide' ? result : result.timeline;
-                setVaccineData(RestructureData(data));
+                setVaccineData(restructureData(data));
             })
     }, [selectedCountry, duration])
 
-    const RestructureData = (data) => {
+    const restructureData = (data) => {
         //1. Converting data in x,y format as required by charts.js
         //2. Editing data by subtracting the previous data from current 
         //   to get no of new cases on that day
@@ -34,6 +34,8 @@ const VaccineCoverage = () => {
                 duration={duration}
                 setDuration={setDuration}
                 lineChartData={vaccineData}
+                bgColor = "rgb(52, 152, 219,0.5)"
+                borderColor ="#3498db"
                 title="Vaccination Rate" />
         </>
     )

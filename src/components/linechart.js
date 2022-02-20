@@ -2,7 +2,7 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 import numeral from "numeral";
 
-const LineChart = ({ lineChartData, duration, setDuration, title }) => {
+const LineChart = ({ lineChartData, duration, setDuration, title, bgColor, borderColor }) => {
 
 
     const options = {
@@ -71,11 +71,11 @@ const LineChart = ({ lineChartData, duration, setDuration, title }) => {
                         data={{
                             datasets: [
                                 {
-                                    backgroundColor: "rgba(204, 16, 52, 0.5)",
-                                    borderColor: "#CC1034",
-                                    borderWidth: '2',
-                                    borderJoinStyle: 'bevel',
-                                    borderCapStyle: 'square',
+                                    backgroundColor: bgColor,
+                                    borderColor: borderColor,
+                                    borderWidth: '1.5',
+                                    borderJoinStyle: 'miter',
+                                    borderCapStyle: 'round',
                                     data: lineChartData,
                                 },
                             ],

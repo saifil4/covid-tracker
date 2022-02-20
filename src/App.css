@@ -210,3 +210,14 @@
   height: calc(100vh - 56px);
   overflow: auto;
 }
+
+.info-panel {
+  height: 500px;
+  width: 300px;
+  position: absolute;
+  z-index: 999;
+  background: white;
+  left: 60px;
+  top: 60px;
+  border-radius: 5px;
+}
