@@ -34,7 +34,7 @@ const Header = () => {
     return (
         <>
             <Navigation bg="light" expand="lg">
-                <Navbar.Brand className="mr-5"><i class="fas fa-virus mr-2"></i><b>Covid Tracker</b></Navbar.Brand>
+                <Navbar.Brand className="mr-5"><i className="fas fa-virus mr-2"></i><b>Covid Tracker</b></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
@@ -45,7 +45,7 @@ const Header = () => {
                             Map
                         </Link>
                     </Nav>
-                    <Form inline>
+                    <Form>
                         <Dropdown onSelect={(e) => handleChange(e)}>
                             <Dropdown.Toggle variant="primary" id="dropdown-basic">
                                 {selectedCountry}
@@ -54,8 +54,8 @@ const Header = () => {
                                 <Dropdown.Item value="Worldwide" href="#/action-1">Worldwide</Dropdown.Item>
                                 <Dropdown.Divider />
                                 {
-                                    countries.map(country => (
-                                        <Dropdown.Item eventKey={country.name}>{country.name}</Dropdown.Item>
+                                    countries.map((country, index) => (
+                                        <Dropdown.Item eventKey={country.name} key={index}>{country.name}</Dropdown.Item>
                                     ))
                                 }
                             </Dropdown.Menu>

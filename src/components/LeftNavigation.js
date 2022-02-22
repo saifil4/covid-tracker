@@ -4,6 +4,7 @@ import CountrySelector from './CountrySelector';
 
 const LeftNavigation = () => {
   const [countryOptions, setCountryOptions] = useState([]);
+
   useEffect(() => {
     fetch('https://disease.sh/v3/covid-19/countries')
       .then((res) => res.json())
@@ -15,9 +16,10 @@ const LeftNavigation = () => {
         setCountryOptions(countries);
       });
   }, [])
+  
   return (
     <LeftNav>
-      <NavHeader><i class="fas fa-virus mr-2"></i><b>Covid Tracker</b></NavHeader>
+      <NavHeader><i className="fas fa-virus mr-2"></i><b>Covid Tracker</b></NavHeader>
       {countryOptions && <CountrySelector countryOptions={countryOptions} />}
     </LeftNav>
   )

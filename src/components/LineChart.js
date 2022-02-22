@@ -140,7 +140,7 @@ const LineChartCardHeader = styled.div`
 
 const LineChartCardTitle = styled.h5`
     display: inline-block;
-`
+`;
 
 const DurationDropDown = styled.select`
     float: right;

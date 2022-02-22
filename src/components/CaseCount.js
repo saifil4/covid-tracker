@@ -14,9 +14,7 @@ const CaseCount = ({ caseType, caseCount, newCase, clsName }) => {
                     <Card.Subtitle className="mb-2 text-muted">{caseType} Cases</Card.Subtitle>
                     <Card.Title as="h3">{caseCount}</Card.Title>
                     <Card.Text>
-                        <h5>
-                            <Badge bg="light">{NewCases()}</Badge>
-                        </h5>
+                        <Badge bg="light">{NewCases()}</Badge>
                     </Card.Text>
                 </Card.Body>
             </Card>

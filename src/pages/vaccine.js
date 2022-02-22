@@ -55,7 +55,7 @@ const Vaccine = () => {
 
                     :
                     <div className="loading-container">
-                        <i style={{ fontSize: "30px" }} class="fas fa-circle-notch"></i>
+                        <i style={{ fontSize: "30px" }} className="fas fa-circle-notch"></i>
                     </div>
             }
 
