@@ -33,7 +33,6 @@ const AppContainer = styled.div`
     height:100vh;
     overflow: auto;
     background: #f9f9f9;
-    padding-top: 10px;
     @media(max-width: 575px){
         height: calc(100vh - 56px);
     }

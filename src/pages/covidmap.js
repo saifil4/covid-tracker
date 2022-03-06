@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MapContainer, TileLayer, useMap, GeoJSON } from 'react-leaflet';
+import styled from 'styled-components';
 import Circle from '../components/circles';
+import Navbar from '../components/Navbar';
 
 const CovidMap = () => {
     const [data, setData] = useState();
@@ -55,7 +57,8 @@ const CovidMap = () => {
 
     return (
         <>
-            <div className="covid-map">
+            <Navbar />
+            <CovidMapContainer className="covid-map">
                 {
                     data
                         ?
@@ -74,7 +77,7 @@ const CovidMap = () => {
                             <i style={{ fontSize: "30px" }} className="fas fa-circle-notch"></i>
                         </div>
                 }
-            </div>
+            </CovidMapContainer>
 
         </>
     )
@@ -82,3 +85,8 @@ const CovidMap = () => {
 }
 
 export default CovidMap;
+
+
+const CovidMapContainer = styled.div`
+    height: calc(100vh - 56px);
+`

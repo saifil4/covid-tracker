@@ -94,12 +94,6 @@
   padding-right: 10px;
 }
 
-.covid-map {
-  height: calc(100vh - 56px);
-  border: 1px solid rgba(0, 0, 0, .125);
-  border-radius: .25rem;
-}
-
 .covid-map .leaflet-container {
   height: 100%;
 }

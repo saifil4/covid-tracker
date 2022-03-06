@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Card, Badge } from 'react-bootstrap'
+import styled from 'styled-components';
 
 const CaseCount = ({ caseType, caseCount, newCase, clsName }) => {
 
@@ -9,7 +10,7 @@ const CaseCount = ({ caseType, caseCount, newCase, clsName }) => {
 
     return (
         <>
-            <Card className={clsName}>
+            <CaseCountCard className={clsName}>
                 <Card.Body style={{ padding: "1rem" }}>
                     <Card.Subtitle className="mb-2 text-muted">{caseType} Cases</Card.Subtitle>
                     <Card.Title as="h3">{caseCount}</Card.Title>
@@ -17,9 +18,16 @@ const CaseCount = ({ caseType, caseCount, newCase, clsName }) => {
                         <Badge bg="light">{NewCases()}</Badge>
                     </Card.Text>
                 </Card.Body>
-            </Card>
+            </CaseCountCard>
         </>
     )
 }
 
 export default CaseCount;
+
+const CaseCountCard = styled(Card)`
+  border-radius: .25rem;
+  background: white;
+  border: none;
+  box-shadow: 0px 3px 5px rgb(0 0 0 / 5%);
+`;

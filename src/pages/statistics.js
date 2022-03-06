@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-
 import LineChart from '../components/LineChart';
 import CaseData from '../components/CaseData';
 import { SelectedCountryContext } from '../store/SelectedCountryContext';
 import VaccineCoverage from '../components/VaccineCoverage';
+import Navbar from '../components/Navbar';
 
 const Statistics = () => {
     const [lineChartData, setLineChartData] = useState();
@@ -42,21 +42,15 @@ const Statistics = () => {
     }, [selectedCountry, duration])
 
     const RestructureData = (data) => {
-        //1. Converting data in x,y format as required by charts.js
-        //2. Editing data by subtracting the previous data from current 
-        //   to get no of new cases on that day
-        //3. Also converting Javascript Object to Array
         return Object.keys(data).map((key, index) => {
             var previouskey = Object.keys(data)[index - 1];
             return ({ x: (key), y: data[key] - data[previouskey] })
         });
     }
 
-    useEffect(() => {
-
-    })
     return (
         <>
+            <Navbar />
             {
                 lineChartData && caseData
                     ?
@@ -72,8 +66,8 @@ const Statistics = () => {
                                     duration={duration}
                                     setDuration={setDuration}
                                     lineChartData={lineChartData}
-                                    bgColor = "rgba(231, 76, 60, 0.5)"
-                                    borderColor ="#CC1034"
+                                    bgColor="rgba(231, 76, 60, 0.5)"
+                                    borderColor="#CC1034"
                                     title="Daily new cases" />
                             </Col>
                             <Col md={6}>

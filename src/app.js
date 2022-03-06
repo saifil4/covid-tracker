@@ -13,9 +13,6 @@ function App() {
           <LeftNavigation />
         </SidePanel>
         <Main>
-          <Nav>
-            <a>Home</a>
-          </Nav>
           <AppRoutes />
         </Main>
       </AppContainer>
@@ -32,22 +29,14 @@ const AppContainer = styled.div`
 `
 
 const SidePanel = styled.div`
-  width: 275px;
+  width: 325px;
   @media (max-width: 576px) {
     display:none;
   }  
 `;
 
-const Nav = styled.div`
-  width: 100%;
-  height: 56px;
-  @media (max-width: 576px) {
-    display:none;
-  }  
-`
-
 const Main = styled.div`
-  width: calc(100% - 275px);
+  width: calc(100% - 325px);
   @media (max-width: 576px) {
     width:100%;
   }  
