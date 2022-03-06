@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CountrySelector from './CountrySelector';
 import SimpleBar from 'simplebar-react';
 
-const LeftNavigation = () => {
+const Sidebar = () => {
   const [countryOptions, setCountryOptions] = useState([]);
 
   const [wordWideCases, setWorldWideCases] = useState();
@@ -64,13 +64,13 @@ const LeftNavigation = () => {
       }
 
       <SimpleBar style={{ height: '400px' }}>
-        {countryOptions && <CountrySelector countryOptions={countryOptions} />}
+        {countryOptions && <CountrySelector countryOptions={countryOptions} wordWideCases={wordWideCases}/>}
       </SimpleBar>
     </LeftNav>
   )
 }
 
-export default LeftNavigation;
+export default Sidebar;
 
 const LeftNav = styled.div`
   width: 100%;

@@ -54,7 +54,7 @@ const Statistics = () => {
             {
                 lineChartData && caseData
                     ?
-                    <Container fluid>
+                    <Container fluid className='py-2'>
                         <Row>
                             <Col md={12}>
                                 <CaseData caseData={caseData} />

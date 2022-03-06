@@ -1,21 +1,24 @@
 import './App.css';
 import React from 'react';
 import AppRoutes from './appRoutes';
-import LeftNavigation from './components/LeftNavigation';
+import Sidebar from './components/Sidebar';
 import styled from 'styled-components';
+import { SelectedCountryProvider } from './store/SelectedCountryContext';
 
 function App() {
 
   return (
     <>
-      <AppContainer>
-        <SidePanel>
-          <LeftNavigation />
-        </SidePanel>
-        <Main>
-          <AppRoutes />
-        </Main>
-      </AppContainer>
+      <SelectedCountryProvider>
+        <AppContainer>
+          <SidePanel>
+            <Sidebar />
+          </SidePanel>
+          <Main>
+            <AppRoutes />
+          </Main>
+        </AppContainer>
+      </SelectedCountryProvider>
     </>
   );
 }

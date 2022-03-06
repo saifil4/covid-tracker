@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
-import { FaPlusCircle } from 'react-icons/fa';
+import { FaPlusCircle, FaGlobe } from 'react-icons/fa';
+import { SelectedCountryContext } from '../store/SelectedCountryContext';
 
-const CountrySelector = ({ countryOptions }) => {
+const CountrySelector = ({ countryOptions, wordWideCases }) => {
 
   const [filteredCountries, setFilterCountries] = useState([]);
-
   const [searchValue, setSearchValue] = useState();
+  const [selectedCountry, setSelectedCountry] = useContext(SelectedCountryContext);
 
   useEffect(() => {
     if (searchValue) {
@@ -16,16 +17,34 @@ const CountrySelector = ({ countryOptions }) => {
     }
   }, [searchValue, countryOptions])
 
+  const handleClick = (country) => {
+    setSelectedCountry(country);
+  }
+
   return (
     <>
       <SearchContainer>
-        <SearchInput type="text" placeholder='Find Country' onChange={(e)=>setSearchValue(e.target.value)} />
+        <SearchInput type="text" placeholder='Find Country' onChange={(e) => setSearchValue(e.target.value)} />
+        <SelectedCountry>
+          <FaGlobe />
+          <CountryName>Worldwide</CountryName>
+          <CountryCases>{wordWideCases.total}</CountryCases>
+        </SelectedCountry>
+        {
+          selectedCountry !== 'Worldwide'
+          &&
+          <SelectedCountry>
+            <FaGlobe />
+            <CountryName>{selectedCountry}</CountryName>
+            <CountryCases>12345678</CountryCases>
+          </SelectedCountry>
+        }
         <Separator />
       </SearchContainer>
       <CountryList>
         {
           filteredCountries.map(country => (
-            <CountryItem>
+            <CountryItem onClick={() => handleClick(country.name)} >
               <FaPlusCircle />
               <CountryName>{country.name}</CountryName>
               <CountryCases>{country.cases}</CountryCases>
@@ -78,6 +97,21 @@ const CountryItem = styled.li`
     border: 1px solid #2684FF;
     background: rgba(38,132,255,0.02);
   
+`;
+
+const SelectedCountry = styled.div`
+  padding: 10px 0 10px 15px;
+  border-radius: 3px;
+  box-shadow: 0 0 7px 0 #e7e7e7;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #5E6C84;
+  cursor: pointer;
+  border: 1px solid #2684FF;
+  background: rgba(38,132,255,0.02);
+  color: #2684FF;
 `;
 
 
