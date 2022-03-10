@@ -2,14 +2,18 @@ import './App.css';
 import React from 'react';
 import Statistics from './pages/statistics';
 import CovidMap from './pages/covidmap';
-import Vaccine from './pages/vaccine';
-import NavBarMobile from './components/NavBarMobile';
+import NavBarMobile from './components/navbar/NavBarMobile';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { SelectedCountryProvider } from "./store/SelectedCountryContext";
 import styled from 'styled-components';
+import CountrySelectorMobile from './components/CountrySelectorMobile';
+import { useCountry } from './store/SelectedCountryContext';
+
 
 function AppRoutes() {
 
+  const { isVisible } = useCountry();
+
+  console.log(isVisible)
   const handleScroll = (e) => {
     console.log(e);
   }
@@ -17,12 +21,12 @@ function AppRoutes() {
   return (
     <>
       <Router>
-          <NavBarMobile />
-          <AppContainer onScroll={handleScroll} >
-            <Route path='/' exact component={Statistics} />
-            <Route path='/covidmap' component={CovidMap} />
-            {/* <Route path='/vaccine' component={Vaccine} /> */}
-          </AppContainer>
+        <NavBarMobile />
+        {isVisible && <CountrySelectorMobile />}
+        <AppContainer onScroll={handleScroll} >
+          <Route path='/' exact component={Statistics} />
+          <Route path='/covidmap' component={CovidMap} />
+        </AppContainer>
       </Router>
     </>
   );

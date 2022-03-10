@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { MapContainer, TileLayer, useMap, GeoJSON } from 'react-leaflet';
 import styled from 'styled-components';
 import Circle from '../components/circles';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/navbar/Navbar';
 
 const CovidMap = () => {
     const [data, setData] = useState();

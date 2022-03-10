@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { SelectedCountryContext } from '../store/SelectedCountryContext';
+import { useCountry } from '../store/SelectedCountryContext';
 import LineChart from '../components/LineChart';
 const VaccineCoverage = () => {
 
     const [vaccineData, setVaccineData] = useState();
-    const [selectedCountry, setSelectedCountry] = useContext(SelectedCountryContext);
+    const {selectedCountry, setSelectedCountry} = useCountry();
     const [duration, setDuration] = useState(90);
 
     useEffect(() => {

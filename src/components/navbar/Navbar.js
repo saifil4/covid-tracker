@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
-import { SelectedCountryContext } from '../store/SelectedCountryContext';
+import { useCountry } from '../../store/SelectedCountryContext';
 
 
 const Navbar = () => {
-    const [selectedCountry] = useContext(SelectedCountryContext);
+    const {selectedCountry} = useCountry();
     return (
         <Navigation>
             <CountryName>{selectedCountry}</CountryName>

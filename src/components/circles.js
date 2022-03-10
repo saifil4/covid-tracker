@@ -1,11 +1,11 @@
 import React, { useEffect, useContext } from 'react';
 import { Circle, Tooltip, useMap, useMapEvent } from 'react-leaflet';
 import styled from 'styled-components';
-import { SelectedCountryContext } from '../store/SelectedCountryContext';
+import { useCountry } from '../store/SelectedCountryContext';
 
 const Circles = ({ zoomLevel, setZoomLevel, mapData }) => {
     const map = useMap();
-    const [selectedCountry, setSelectedCountry] = useContext(SelectedCountryContext);
+    const {selectedCountry, setSelectedCountry} = useCountry();
 
     useMapEvent(('zoom'), () => {
         console.log(map.getZoom());

@@ -48,7 +48,7 @@ const Sidebar = () => {
 
   return (
     <LeftNav>
-      <NavHeader><b>Covid Tracker</b></NavHeader>
+      <NavHeader><b>Covid-19 Tracker</b></NavHeader>
       {
         wordWideCases &&
         <OverviewContainer>
@@ -64,7 +64,7 @@ const Sidebar = () => {
       }
 
       <SimpleBar style={{ height: '400px' }}>
-        {countryOptions && <CountrySelector countryOptions={countryOptions} wordWideCases={wordWideCases}/>}
+        {countryOptions && <CountrySelector countryOptions={countryOptions} wordWideCases={wordWideCases} />}
       </SimpleBar>
     </LeftNav>
   )

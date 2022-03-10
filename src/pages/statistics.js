@@ -2,15 +2,15 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import LineChart from '../components/LineChart';
 import CaseData from '../components/CaseData';
-import { SelectedCountryContext } from '../store/SelectedCountryContext';
+import { useCountry } from '../store/SelectedCountryContext';
 import VaccineCoverage from '../components/VaccineCoverage';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/navbar/Navbar';
 
 const Statistics = () => {
     const [lineChartData, setLineChartData] = useState();
     const [caseData, setCaseData] = useState();
     const [duration, setDuration] = useState(90);
-    const [selectedCountry, setSelectedCountry] = useContext(SelectedCountryContext);
+    const {selectedCountry, setSelectedCountry} = useCountry();
 
     const FetchAllCasesData = () => {
         const region = selectedCountry === "Worldwide" ? "all" : "countries/" + selectedCountry;

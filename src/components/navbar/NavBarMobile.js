@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Navbar, Nav, Form, Dropdown } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
-import { SelectedCountryContext } from '../store/SelectedCountryContext';
+import { useCountry } from '../../store/SelectedCountryContext';
 import styled from 'styled-components';
 
 const NavBarMobile = () => {
     const [countries, setCountries] = useState([]);
-    const [selectedCountry, setSelectedCountry] = useContext(SelectedCountryContext);
+    const {selectedCountry, setSelectedCountry, setIsVisible} = useCountry();
 
-    // const [selectedCountry, setSelectedCountry] = useState('Worldwide');
     useEffect(() => {
         fetch('https://disease.sh/v3/covid-19/countries')
             .then((res) => res.json())
@@ -21,9 +20,8 @@ const NavBarMobile = () => {
             });
     }, [])
 
-    const handleChange = (event) => {
-        console.log(event)
-        setSelectedCountry(event);
+    const handleClick = () => {
+        setIsVisible(true);
     }
 
     const LinkClass = (path) => {
@@ -38,7 +36,7 @@ const NavBarMobile = () => {
                     <i className="fas fa-virus mr-2"></i><b>Covid Tracker</b>
                 </Logo>
                 <SearchContiner>
-                    <SearchInput type="text" placeholder='Search' />
+                    <SearchInput onClick={handleClick} type="text" placeholder='Search' />
                 </SearchContiner>
                 <CustomNav className="mr-auto">
                     <Link className={LinkClass("/")} to="/">

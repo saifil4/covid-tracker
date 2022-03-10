@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
-import { FaPlusCircle, FaGlobe } from 'react-icons/fa';
-import { SelectedCountryContext } from '../store/SelectedCountryContext';
+import { FaPlusCircle, FaGlobe, FaTimesCircle } from 'react-icons/fa';
+import { useCountry } from '../store/SelectedCountryContext';
 
 const CountrySelector = ({ countryOptions, wordWideCases }) => {
 
   const [filteredCountries, setFilterCountries] = useState([]);
   const [searchValue, setSearchValue] = useState();
-  const [selectedCountry, setSelectedCountry] = useContext(SelectedCountryContext);
+  const {selectedCountry, setSelectedCountry} = useCountry();
 
   useEffect(() => {
     if (searchValue) {
@@ -21,6 +21,10 @@ const CountrySelector = ({ countryOptions, wordWideCases }) => {
     setSelectedCountry(country);
   }
 
+  const handleSelectedCountryClick = () => {
+    setSelectedCountry('Worldwide');
+  }
+
   return (
     <>
       <SearchContainer>
@@ -28,13 +32,16 @@ const CountrySelector = ({ countryOptions, wordWideCases }) => {
         <SelectedCountry>
           <FaGlobe />
           <CountryName>Worldwide</CountryName>
-          <CountryCases>{wordWideCases.total}</CountryCases>
+          {
+            wordWideCases &&  <CountryCases>{wordWideCases.total}</CountryCases>
+          }
+         
         </SelectedCountry>
         {
           selectedCountry !== 'Worldwide'
           &&
-          <SelectedCountry>
-            <FaGlobe />
+          <SelectedCountry onClick={handleSelectedCountryClick}>
+            <FaTimesCircle />
             <CountryName>{selectedCountry}</CountryName>
             <CountryCases>12345678</CountryCases>
           </SelectedCountry>
