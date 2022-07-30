@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import { useCountry } from '../../store/SelectedCountryContext';
+import NavLinks from './NavLinks';
 
 
 const Navbar = () => {
@@ -10,8 +11,7 @@ const Navbar = () => {
     return (
         <Navigation>
             <CountryName>{selectedCountry}</CountryName>
-            <Link to="/" >Statistics</Link>
-            <Link to="/covidmap">Map</Link>
+            <NavLinks />
         </Navigation>
     )
 }

@@ -1,76 +1,77 @@
-import React, { useEffect, useState, useContext } from 'react';
-import styled from 'styled-components';
-import { FaPlusCircle, FaGlobe, FaTimesCircle } from 'react-icons/fa';
-import { useCountry } from '../store/SelectedCountryContext';
+import React, { useEffect, useState, useContext } from "react";
+import styled from "styled-components";
+import { FaPlusCircle, FaGlobe, FaTimesCircle } from "react-icons/fa";
+import { useCountry } from "../../store/SelectedCountryContext";
+import millify from "millify";
 
 const CountrySelector = ({ countryOptions, wordWideCases }) => {
-
   const [filteredCountries, setFilterCountries] = useState([]);
   const [searchValue, setSearchValue] = useState();
-  const {selectedCountry, setSelectedCountry} = useCountry();
+  const { selectedCountry, setSelectedCountry } = useCountry();
 
   useEffect(() => {
     if (searchValue) {
-      setFilterCountries(countryOptions.filter(country => country.name.toLowerCase().includes(searchValue.toLowerCase())));
+      setFilterCountries(
+        countryOptions.filter((country) =>
+          country.name.toLowerCase().includes(searchValue.toLowerCase())
+        )
+      );
     } else {
       setFilterCountries(countryOptions);
     }
-  }, [searchValue, countryOptions])
+  }, [searchValue, countryOptions]);
 
   const handleClick = (country) => {
     setSelectedCountry(country);
-  }
+  };
 
   const handleSelectedCountryClick = () => {
-    setSelectedCountry('Worldwide');
-  }
+    setSelectedCountry("Worldwide");
+  };
 
   return (
     <>
       <SearchContainer>
-        <SearchInput type="text" placeholder='Find Country' onChange={(e) => setSearchValue(e.target.value)} />
+        <SearchInput
+          type="text"
+          placeholder="Find Country"
+          onChange={(e) => setSearchValue(e.target.value)}
+        />
         <SelectedCountry>
           <FaGlobe />
           <CountryName>Worldwide</CountryName>
-          {
-            wordWideCases &&  <CountryCases>{wordWideCases.total}</CountryCases>
-          }
-         
+          {wordWideCases && (
+            <CountryCases>{millify(wordWideCases.total)}</CountryCases>
+          )}
         </SelectedCountry>
-        {
-          selectedCountry !== 'Worldwide'
-          &&
+        {selectedCountry !== "Worldwide" && (
           <SelectedCountry onClick={handleSelectedCountryClick}>
             <FaTimesCircle />
             <CountryName>{selectedCountry}</CountryName>
             <CountryCases>12345678</CountryCases>
           </SelectedCountry>
-        }
+        )}
         <Separator />
       </SearchContainer>
       <CountryList>
-        {
-          filteredCountries.map(country => (
-            <CountryItem onClick={() => handleClick(country.name)} >
-              <FaPlusCircle />
-              <CountryName>{country.name}</CountryName>
-              <CountryCases>{country.cases}</CountryCases>
-            </CountryItem>
-          ))
-        }
+        {filteredCountries.map((country) => (
+          <CountryItem onClick={() => handleClick(country.name)}>
+            <FaPlusCircle />
+            <CountryName>{country.name}</CountryName>
+            <CountryCases>{millify(country.cases)}</CountryCases>
+          </CountryItem>
+        ))}
       </CountryList>
     </>
-  )
-}
+  );
+};
 
 export default CountrySelector;
-
 
 const SearchContainer = styled.div`
   width: 100%;
   padding: 5px 25px;
 `;
-
 
 const SearchInput = styled.input`
   width: 100%;
@@ -84,7 +85,7 @@ const SearchInput = styled.input`
 
 const CountryList = styled.ul`
   overflow: auto;
-  list-decoration:none;
+  list-decoration: none;
   padding: 5px 25px;
 `;
 
@@ -114,16 +115,15 @@ const SelectedCountry = styled.div`
   display: flex;
   align-items: center;
   font-size: 13px;
-  color: #5E6C84;
+  color: #5e6c84;
   cursor: pointer;
-  border: 1px solid #2684FF;
-  background: rgba(38,132,255,0.02);
-  color: #2684FF;
+  border: 1px solid #2684ff;
+  background: rgba(38, 132, 255, 0.02);
+  color: #2684ff;
 `;
 
-
 const CountryName = styled.div`
-  display:inline-block;
+  display: inline-block;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
@@ -132,15 +132,11 @@ const CountryName = styled.div`
   width: 65%;
 `;
 
-
-
 const CountryCases = styled.div`
-  display:inline-block;
-  align-self:right;
+  display: inline-block;
+  align-self: right;
 `;
-
 
 const Separator = styled.hr`
- opacity:0.15;
+  opacity: 0.15;
 `;
-

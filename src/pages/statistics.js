@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import LineChart from '../components/LineChart';
-import CaseData from '../components/CaseData';
+import CaseData from '../components/cases/CaseData';
 import { useCountry } from '../store/SelectedCountryContext';
 import VaccineCoverage from '../components/VaccineCoverage';
 import Navbar from '../components/navbar/Navbar';

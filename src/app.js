@@ -1,9 +1,9 @@
 import './App.css';
 import React from 'react';
 import AppRoutes from './appRoutes';
-import Sidebar from './components/Sidebar';
 import styled from 'styled-components';
 import { SelectedCountryProvider } from './store/SelectedCountryContext';
+import Sidebar from './components/sidebar/Sidebar';
 
 function App() {
 
@@ -29,6 +29,7 @@ export default App;
 const AppContainer = styled.div`
   width: 100%;
   display: flex;
+  height: 100vh;
 `
 
 const SidePanel = styled.div`

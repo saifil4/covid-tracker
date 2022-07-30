@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { Circle, Tooltip, useMap, useMapEvent } from 'react-leaflet';
 import styled from 'styled-components';
-import { useCountry } from '../store/SelectedCountryContext';
+import { useCountry } from '../../store/SelectedCountryContext';
 
 const Circles = ({ zoomLevel, setZoomLevel, mapData }) => {
     const map = useMap();
@@ -22,7 +22,7 @@ const Circles = ({ zoomLevel, setZoomLevel, mapData }) => {
     }, [selectedCountry])
 
     const Multiplier = () => {
-        return parseInt(600 / zoomLevel);
+        return parseInt(400 / zoomLevel);
     }
 
     return (

@@ -5,7 +5,7 @@ import CovidMap from './pages/covidmap';
 import NavBarMobile from './components/navbar/NavBarMobile';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import CountrySelectorMobile from './components/CountrySelectorMobile';
+import CountrySelectorMobile from './components/country-selector/CountrySelectorMobile';
 import { useCountry } from './store/SelectedCountryContext';
 
 
@@ -39,8 +39,9 @@ const AppContainer = styled.div`
     height:100vh;
     overflow: auto;
     background: #f9f9f9;
-    @media(max-width: 575px){
-        height: calc(100vh - 56px);
+    height: calc(100vh - 140px);
+    @media(min-width: 577px){
+        height: 100%
     }
 
 `

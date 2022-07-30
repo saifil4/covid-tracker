@@ -13,7 +13,7 @@ const VaccineCoverage = () => {
         fetch(`https://disease.sh/v3/covid-19/vaccine/coverage/${url}${durationquery}`)
             .then(res => res.json())
             .then(result => {
-                var data = selectedCountry === 'Worldwide' ? result : result.timeline;
+                const data = selectedCountry === 'Worldwide' ? result : result.timeline;
                 setVaccineData(restructureData(data));
             })
     }, [selectedCountry, duration])
