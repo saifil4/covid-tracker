@@ -5,7 +5,7 @@ import styled from "styled-components";
 import NavLinks from "./NavLinks";
 
 const NavBarMobile = () => {
-  const { setIsVisible } = useCountry();
+  const { selectedCountry, setIsVisible } = useCountry();
 
   const handleClick = () => {
     setIsVisible(true);
@@ -19,7 +19,12 @@ const NavBarMobile = () => {
           <b>Covid Tracker</b>
         </Logo>
         <SearchContiner>
-          <SearchInput onClick={handleClick} type="text" placeholder="Search" />
+          <SearchInput
+            value={selectedCountry}
+            onClick={handleClick}
+            type="text"
+            placeholder="Search"
+          />
         </SearchContiner>
         <CustomNav className="mr-auto">
           <NavLinks />

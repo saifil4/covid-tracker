@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useCountry } from '../../store/SelectedCountryContext';
 import { FaTimesCircle } from 'react-icons/fa';
 import CountrySelector from './CountrySelector';
 
 const CountrySelectorMobile = () => {
-    const { setIsVisible } = useCountry();
-
-    const handleClick = () => {
-        setIsVisible(false);
-    }
 
     const [countryOptions, setCountryOptions] = useState([]);
 
@@ -34,9 +28,7 @@ const CountrySelectorMobile = () => {
 
     return (
         <SelectorContainer>
-            <FaTimesCircle onClick={handleClick} />
             <CountrySelector countryOptions={countryOptions} />
-            <CloseButton>Close</CloseButton>
         </SelectorContainer>
     )
 }
@@ -48,14 +40,10 @@ const SelectorContainer = styled.div`
     position: absolute;
     width: 100%;
     background: white;
-    height: calc(100% - 140px);
+    padding: 15px 0;
+    height: 100%;
     z-index: 1;
-    bottom: 0;
     overflow: auto;
-`
-
-const CloseButton = styled.button`
-   position: absolute;
-   bottom: 5px;
+    top: 0;
 `
 

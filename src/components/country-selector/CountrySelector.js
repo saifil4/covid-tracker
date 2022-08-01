@@ -7,7 +7,7 @@ import millify from "millify";
 const CountrySelector = ({ countryOptions, wordWideCases }) => {
   const [filteredCountries, setFilterCountries] = useState([]);
   const [searchValue, setSearchValue] = useState();
-  const { selectedCountry, setSelectedCountry } = useCountry();
+  const { selectedCountry, setSelectedCountry, setIsVisible } = useCountry();
 
   useEffect(() => {
     if (searchValue) {
@@ -23,6 +23,7 @@ const CountrySelector = ({ countryOptions, wordWideCases }) => {
 
   const handleClick = (country) => {
     setSelectedCountry(country);
+    setIsVisible(false)
   };
 
   const handleSelectedCountryClick = () => {
